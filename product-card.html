@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .card {
+      background: white;
+      width: 320px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-add {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .btn-add:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+
+    .stock-status {
+      color: red;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .toggle-btn {
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: #007bff;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="https://t3.ftcdn.net/jpg/02/28/19/26/360_F_228192611_akMH8f6lbZ2NedZluGMgZCco0aKRKtGk.jpg" alt="Product Image" />
+
+    <div class="card-body">
+      <div class="card-title">Modern Headphones</div>
+      <div class="price">₹2,499</div>
+
+      <select>
+        <option>Black</option>
+        <option>White</option>
+        <option>Blue</option>
+      </select>
+
+      <button id="cartBtn" class="btn btn-add">Add to Cart</button>
+      <div id="stockStatus" class="stock-status">Out of Stock</div>
+
+      <button class="toggle-btn" onclick="toggleStock()">Toggle Stock</button>
+    </div>
+  </div>
+
+  <script>
+    let inStock = true;
+
+    function toggleStock() {
+      inStock = !inStock;
+
+      const cartBtn = document.getElementById("cartBtn");
+      const stockStatus = document.getElementById("stockStatus");
+
+      if (inStock) {
+        cartBtn.disabled = false;
+        cartBtn.classList.remove("btn-disabled");
+        cartBtn.classList.add("btn-add");
+        cartBtn.textContent = "Add to Cart";
+        stockStatus.style.display = "none";
+      } else {
+        cartBtn.disabled = true;
+        cartBtn.classList.remove("btn-add");
+        cartBtn.classList.add("btn-disabled");
+        cartBtn.textContent = "Unavailable";
+        stockStatus.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
