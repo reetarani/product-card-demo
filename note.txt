@@ -1,0 +1,5 @@
+Layout Approach:
+I used a simple HTML structure styled with custom CSS for a clean, modern card layout. Flexbox is used for centering, and consistent padding and shadows create visual balance.
+
+Responsiveness Considerations:
+The image scales responsively using width: 100% and height: auto. All elements, including buttons and dropdowns, are styled to adapt across different screen sizes without breaking the layout.
